@@ -18,10 +18,11 @@ Feature: Verifying AdactinHotelApp
       | leo       | kumar    | 18 kodambakkam | 987654321123456789 | AMEX           |           4 |       2022 | 888 |
       | praveen   | kumar    | 18 kodambakkam | 987654321123456789 | AMEX           |           4 |       2022 | 888 |
       | sand      | kumar    | 18 kodambakkam | 987654321123456789 | AMEX           |           4 |       2022 | 888 |
-    Then User should book the hotel and verify order details
+    And User should book the hotel and verify order details
     Then User should logout and exit
 
     Examples: 
       | userName | passWord |
+      | prakash0 | J5M3AD   |
       | prakash0 | J5M3AD   |
       | prakash0 | J5M3AD   |

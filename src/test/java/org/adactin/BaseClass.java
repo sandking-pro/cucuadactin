@@ -18,7 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 	public static WebDriver driver;
-	
+
 	public void getDriver() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -28,23 +28,24 @@ public class BaseClass {
 	public void launchUrl(String url) {
 		driver.get(url);
 	}
-	
+
 	public String getCurl() {
 		return driver.getCurrentUrl();
 	}
-	
-	public void timeOut(int i){
+
+	public void timeOut(int i) {
 		driver.manage().timeouts().implicitlyWait(i, TimeUnit.SECONDS);
 	}
-	
-	public void enterText(WebElement element,String value) {
+
+	public void enterText(WebElement element, String value) {
 		element.clear();
 		element.sendKeys(value);
-    }
-	public void btnClick(WebElement element) {
-	element.click();
 	}
-	
+
+	public void btnClick(WebElement element) {
+		element.click();
+	}
+
 	public void screenShot(String data) throws IOException {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File srcFile = ts.getScreenshotAs(OutputType.FILE);
@@ -54,13 +55,16 @@ public class BaseClass {
 
 	public void selectDropdown(WebElement dropdown, String text, String by) {
 		Select sel = new Select(dropdown);
-		if (by == "vt") {
+
+		switch (by) {
+		case "vt":
 			sel.selectByVisibleText(text);
-		} else if (by == "val") {
+			break;
+		case "val":
 			sel.selectByValue(text);
-		} else {
-			int indx = Integer.parseInt(text);
-			sel.selectByIndex(indx);
+			break;
+		default:
+			sel.selectByIndex(Integer.parseInt(text));
 		}
 	}
 
@@ -68,5 +72,4 @@ public class BaseClass {
 		return element.getAttribute("value");
 	}
 
-		
 }

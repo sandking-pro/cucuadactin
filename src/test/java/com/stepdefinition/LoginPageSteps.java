@@ -27,12 +27,12 @@ public class LoginPageSteps extends BaseClass {
 	public void user_is_on_the_AdactinHotelApp_login_page() {
 		getDriver();
 		launchUrl("http://adactinhotelapp.com/");
-		lp = new LoginPageElements();
 	}
 
 	@When("User should enter {string} and {string}")
 	public void user_should_enter_and(String un, String pass) {
 //		Map<String, String> map = dataTable.asMap(String.class, String.class);
+		lp = new LoginPageElements();
 		enterText(lp.getTxtUsername(), un);
 		enterText(lp.getTxtpassword(), pass);
 
